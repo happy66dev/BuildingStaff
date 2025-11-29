@@ -44,10 +44,8 @@ public class ClearProjectileCommand extends SubCommand {
             player.getWorld().getEntities().forEach(entity -> {
                 if (entity instanceof Display display) {
                     List<MetadataValue> metadata = display.getMetadata(BuildingStaffPlugin.getInstance().getName());
-                    if (!metadata.isEmpty()) {
-                        if (metadata.getFirst().asBoolean()) {
-                            display.remove();
-                        }
+                    if (!metadata.isEmpty() && metadata.get(0).asBoolean()) {
+                        display.remove();
                     }
                 }
             });

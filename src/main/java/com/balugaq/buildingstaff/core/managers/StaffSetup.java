@@ -11,7 +11,9 @@ import com.balugaq.buildingstaff.implementation.items.BreakingStaff9;
 import com.balugaq.buildingstaff.implementation.items.BuildingStaff4096;
 import com.balugaq.buildingstaff.implementation.items.BuildingStaff64;
 import com.balugaq.buildingstaff.implementation.items.BuildingStaff9;
+import com.balugaq.buildingstaff.implementation.items.DisplayClearer;
 import com.balugaq.buildingstaff.utils.ItemStackUtil;
+import com.balugaq.buildingstaff.implementation.items.DisplayClearer;
 import com.balugaq.buildingstaff.utils.KeyUtil;
 import com.balugaq.buildingstaff.utils.SlimefunItemUtil;
 import com.balugaq.buildingstaff.utils.compatibility.Converter;
@@ -36,6 +38,7 @@ public class StaffSetup implements IManager {
     public static BreakingStaff9 breakingStaff9;
     public static BreakingStaff64 breakingStaff64;
     public static BreakingStaff4096 breakingStaff4096;
+    public static DisplayClearer displayClearer;
     private final BuildingStaffPlugin plugin;
 
     public StaffSetup(BuildingStaffPlugin plugin) {
@@ -52,6 +55,7 @@ public class StaffSetup implements IManager {
         SlimefunItemUtil.unregisterItem(buildingStaff4096);
         SlimefunItemUtil.unregisterItem(buildingStaff64);
         SlimefunItemUtil.unregisterItem(buildingStaff9);
+        SlimefunItemUtil.unregisterItem(displayClearer);
         SlimefunItemUtil.unregisterItemGroup(mainGroup);
         SlimefunItemUtil.unregisterItems(instance);
         SlimefunItemUtil.unregisterItemGroups(instance);
@@ -65,6 +69,10 @@ public class StaffSetup implements IManager {
         ItemStack damascusSteel = Converter.getItem(SlimefunItems.DAMASCUS_STEEL_INGOT);
         ItemStack brass = Converter.getItem(SlimefunItems.BRASS_INGOT);
         ItemStack bronze = Converter.getItem(SlimefunItems.BRONZE_INGOT);
+        ItemStack glass = new ItemStack(Material.GLASS);
+        ItemStack diamond = new ItemStack(Material.DIAMOND);
+        ItemStack gold_ingot = new ItemStack(Material.GOLD_INGOT);
+
         mainGroup = new ItemGroup(KeyUtil.newKey("building_staff"), Converter.getItem(
                 Material.BLAZE_ROD,
                 "&a建筑魔杖"
@@ -242,6 +250,24 @@ public class StaffSetup implements IManager {
         );
 
         breakingStaff4096.register(plugin);
+
+        displayClearer = new DisplayClearer(
+                mainGroup,
+                new SlimefunItemStack(
+                        "BUILDING_STAFF_DISPLAY_CLEARER",
+                        Material.CLAY_BALL,
+                        "&e实体清除器",
+                        "&e清除建筑魔杖残留的全息实体"
+                ),
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        glass, glass, gold_ingot,
+                        diamond, diamond, glass,
+                        glass, glass, gold_ingot
+                }
+        );
+
+        displayClearer.register(plugin);
     }
 
     @Override
