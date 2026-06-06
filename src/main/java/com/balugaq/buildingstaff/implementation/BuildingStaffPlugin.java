@@ -88,17 +88,6 @@ public class BuildingStaffPlugin extends JavaPlugin implements SlimefunAddon {
         Debug.log("BuildingStaff 已卸载!");
     }
 
-    public void tryUpdate() {
-        try {
-            if (configManager.isAutoUpdate() && getDescription().getVersion().startsWith("Build")) {
-                GuizhanUpdater.start(this, getFile(), username, repo, branch);
-            }
-        } catch (NoClassDefFoundError | NullPointerException | UnsupportedClassVersionError e) {
-            Debug.log("自动更新失败: " + e.getMessage());
-            Debug.log(e);
-        }
-    }
-
     @Override
     @NotNull
     public JavaPlugin getJavaPlugin() {

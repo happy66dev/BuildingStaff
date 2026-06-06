@@ -73,10 +73,6 @@ public class ConfigManager implements IManager {
         }
     }
 
-    public boolean isAutoUpdate() {
-        return plugin.getConfig().getBoolean("auto-update");
-    }
-
     public boolean isDebug() {
         return plugin.getConfig().getBoolean("debug");
     }

@@ -93,13 +93,7 @@
             <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Chinese localization library -->
-        <dependency>
-            <groupId>net.guizhanss</groupId>
-            <artifactId>GuizhanLibPlugin</artifactId>
-            <version>1.7.6</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.github.happy66dev</groupId>
             <artifactId>Slimefun4</artifactId>
